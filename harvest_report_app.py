@@ -48,12 +48,27 @@ def get_worksheet():
     except gspread.exceptions.WorksheetNotFound:
         ws = sheet.add_worksheet(title=WORKSHEET_NAME, rows=1000, cols=len(COLUMNS))
         ws.append_row(COLUMNS)
+        return ws
+
+    # Make sure the header row is exactly COLUMNS (fixes sheets that were
+    # created manually, or have stray blank header cells).
+    first_row = ws.row_values(1)
+    if first_row != COLUMNS:
+        ws.update("A1", [COLUMNS])
     return ws
 
 
 def load_data() -> pd.DataFrame:
     ws = get_worksheet()
-    records = ws.get_all_records()
+    try:
+        records = ws.get_all_records(expected_headers=COLUMNS)
+    except Exception:
+        # Fallback: header row is malformed/empty (e.g. brand new sheet).
+        # Rewrite it cleanly and retry.
+        values = ws.get_all_values()
+        if not values or values[0] != COLUMNS:
+            ws.update("A1", [COLUMNS])
+        records = ws.get_all_records(expected_headers=COLUMNS)
     if not records:
         return pd.DataFrame(columns=COLUMNS)
     return pd.DataFrame(records)
