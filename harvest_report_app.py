@@ -119,7 +119,7 @@ HARVEST_REASON_OPTIONS = [
     "Lower Stockings of feeds",
     "Equipment's issues",
     "Other",
-    "O2 Drop"
+    "O2 Drop",
 ]
 MARKETING_MANAGER_OPTIONS = ["Mr. Ansadeen", "Mr. Jagath", "Mr. Dilip"]
 TECHNICIAN_OPTIONS = ["Mr. Vishmika", "Mr. Ashen", "Mr. Janaka", "Mr. Shashika", "Mr. Janushan"]
