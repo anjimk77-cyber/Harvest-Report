@@ -6,7 +6,7 @@ from datetime import datetime, date
 from io import BytesIO
 
 # Configure page
-st.set_page_config(page_title="Harvest Report - Data Collection",page_icon="KMN-Aqua-logo-white.png", layout="wide")
+st.set_page_config(page_title="Harvest Report - Data Collection",page_icon="pngtree-cooked-shrimp-png-image_16045084.png", layout="wide")
 
 # Title
 st.title("🦐 Harvest Report - Data Collection")
