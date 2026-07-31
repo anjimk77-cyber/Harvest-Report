@@ -279,4 +279,4 @@ if len(df) > 0:
 else:
     st.info("ℹ️ No data saved yet. Fill out the form above to get started!")
 
-st.markdown("<p style='text-align: center; color: gray;'>KMN Aqua Services - Harvest Report Monitoring System</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: gray;'>Copyright © 2026 KMN Aqua Services - Harvest Report Monitoring System</p>", unsafe_allow_html=True)
